@@ -116,6 +116,30 @@ def login():
     
     return render_template("login.html", title="Entrar", error=error)
 
+@app.route("/create", methods=["GET","POST"])
+def create():
+    if ("nome" not in session):
+        return redirect(url_for("/login"))
+
+    if (request.method == "POST"):
+        descricao = request.form["description"]
+
+        conexao = connect_to_database()
+        cursor = conexao.cursor(dictionary=True)
+        
+        sql = "INSERT INTO tarefa (descricao, id_usuario) VALUES (%s, %s)"
+        valores = (descricao, session["id_usuario"])
+
+        cursor.execute(sql, valores)
+        conexao.commit()
+
+        cursor.close()
+        conexao.close()
+
+        return redirect(url_for("home"))
+    
+    return render_template("create.html", title="Criar")
+
 @app.route("/logout")
 def logout():
     session.clear()
