@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+   <h1 class="section-title">Criar nova tarefa</h1> 
+
+    <form method="post" enctype="application/x-www-form-urlencoded" class="new-post-form">
+        <div class="form-group">
+            <label for="description">Descrição da tarefa</label>
+            <input type="text" name="description" id="description" required maxlength="500">
+        </div>
+
+        <div class="form-submit">
+            <input type="submit" value="Concluir" class="btn">
+            <a href="{{ url_for('home') }}" class="btn">Cancelar</a>
+        </div>
+    </form>
+{% endblock content %}

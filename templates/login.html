@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+    <h1 class="form-title">Entrar</h1>
+    <form method="post" enctype="application/x-www-form-urlencoded">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required maxlength="255">
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required maxlength="100">
+        </div>
+
+        <div class="form-submit"><input type="submit" value="Enviar" class="btn btn-large"></div>
+    </form>
+    <span class="form-redirect">Ainda não possui uma conta? <a href="{{ url_for('signup') }}" class="form-redirect-link">Cadastre-se</a></span>
+</div>    
+{% endblock content %}
