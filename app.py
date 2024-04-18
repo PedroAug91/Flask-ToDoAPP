@@ -20,25 +20,32 @@ def home():
     if ("nome" not in session):
         return redirect(url_for("login"))
 
-    if (request.method == "POST"):
-        conexao = connect_to_database()
-        cursor = conexao.cursor(dictionary=True)
+    tarefas_inativas = tarefas_ativas = None
 
-        valores = (session["id_usuario"], )
+    conexao = connect_to_database()
+    cursor = conexao.cursor(dictionary=True)
 
-        sql = "SELECT ativo, descricao FROM tarefa WHERE id_usuario = %s AND ativo = 1"
-        tarefas_ativas = cursor.execute(sql, valores)
-        
-        sql = "SELECT ativo, descricao FROM tarefa WHERE id_usuario = %s AND ativo = 0"
-        tarefas_inativas = cursor(sql, valores)
+    valores = (session["id_usuario"], )
 
-        cursor.close()
-        conexao.close()
-
+    sql = "SELECT descricao FROM tarefa WHERE id_usuario = %s AND ativo = 1"
+    cursor.execute(sql, valores)
+    tarefas_ativas = cursor.fetchall()
     
-        return render_template("home.html", title="Tarefas", active_tasks=tarefas_ativas, inactive_tasks=tarefas_inativas)
+    sql = "SELECT descricao FROM tarefa WHERE id_usuario = %s AND ativo = 0"
+    cursor.execute(sql, valores)
+    tarefas_inativas = cursor.fetchall()
 
-    return render_template("home.html", title="Tarefas", active_tasks=None, inactive_tasks=None)
+    cursor.close()
+    conexao.close()
+
+    if (tarefas_ativas == None and tarefas_inativas is None):
+        return render_template("home.html", title="Tarefas", active_tasks=None, inactive_tasks=None)
+    elif (tarefas_ativas == None and tarefas_inativas != None):
+        return render_template("home.html", title="Tarefas", active_tasks=None, inactive_tasks=tarefas_inativas)
+    elif (tarefas_ativas != None and tarefas_inativas == None):
+        return render_template("home.html", title="Tarefas", active_tasks=tarefas_ativas, inactive_tasks=None)
+    
+    return render_template("home.html", title="Tarefas", active_tasks=tarefas_ativas, inactive_tasks=tarefas_inativas)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
