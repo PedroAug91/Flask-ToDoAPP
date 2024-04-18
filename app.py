@@ -82,3 +82,42 @@ def signup():
 
     return render_template("signup.html", title="Cadastrar", error=error)
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if ("nome" in session):
+        return redirect(url_for("home"))
+
+    error = None
+
+    if (request.method == "POST"):
+        email = request.form["email"]
+        senha = request.form["password"]
+
+        conexao = connect_to_database()
+        cursor = conexao.cursor(dictionary=True)
+
+        sql = "SELECT id_usuario, nome, email, senha FROM usuario WHERE email = %s"
+        valores = (email, )
+        cursor.execute(sql, valores)
+        usuario = cursor.fetchone()
+
+        cursor.close()
+        conexao.close()
+
+        if (usuario is None):
+            error = "Essa conta não existe."
+        elif (usuario["senha"] != senha):
+            error = "Senha incorreta, tente novamente."
+        else:
+            session["nome"] = usuario["nome"]
+            session["id_usuario"] = usuario["id_usuario"]
+
+            return redirect(url_for("home"))
+    
+    return render_template("login.html", title="Entrar", error=error)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+
+    return redirect(url_for("login"))
