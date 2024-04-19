@@ -1,4 +1,8 @@
+/* Imports  */
 @import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap');
+
+
+/* Estilos base para todos os arquivos html */
 
 * {
     margin: 0;
@@ -22,21 +26,31 @@ body {
     font-family: var(--font);
 }
 
+.btn {
+    color: var(--clr-primary);
+    background-color: #bc452c;
+    border: 0;
+    border-radius: 14px;
+    margin-inline: auto;
+}
+
+/* Estilo da barra de navegação */
 
 header {
     align-items: center;
     background-color: var(--clr-secondary);
     display: flex;
+    margin-bottom: 8rem;
     min-height: 7rem;
 }
 
 nav {
-    margin-inline: 14rem;
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: space-between;
-    width: 100%;
+    margin-inline: 14rem;
     min-height: auto;
+    width: 100%;
 }
 
 a, a:visited {
@@ -49,4 +63,68 @@ header a {
 
 main a {
     color: var(--clr-secondary)
+}
+
+/* Estilo dos formularios */
+
+.form-container {
+    align-items: center;
+    border: solid #000000 1px;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 0;
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    max-width: 96rem;
+}
+
+.form-title {
+    font-size: 3.6rem;
+    font-weight: bold;
+    margin-block: 2rem;
+}
+
+form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-group, .btn-large {
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 2.4rem;
+}
+
+input {
+    border: solid #000000 1px;
+    border-radius: 5px;
+    font-family: 'Inika', serif;
+    font-size: 2rem;
+    min-height: 4.9rem;
+    padding-inline: .8rem;
+    width: 44rem;
+}
+
+.btn-large {
+    width: 25.8rem !important;
+}
+
+.form-redirect {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    max-width: 27.5rem;
+    text-align: center;
+}
+
+.form-redirect-link {
+    text-decoration: underline;
 }
