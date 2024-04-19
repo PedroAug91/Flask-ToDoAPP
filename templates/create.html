@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-   <h1 class="section-title">Criar nova tarefa</h1> 
+   <div class="container">
+       <h1 class="section-title">Criar nova tarefa</h1>
+   </div> 
 
-    <form method="post" enctype="application/x-www-form-urlencoded" class="new-post-form">
-        <div class="form-group">
+    <form method="post" enctype="application/x-www-form-urlencoded" class="new-post-form" id="post-form">
+        <div class="form-group task-form">
             <label for="description">Descrição da tarefa</label>
-            <input type="text" name="description" id="description" required maxlength="500">
+            <textarea form="post-form" name="description" id="description" required maxlength="500"></textarea>
         </div>
 
         <div class="form-submit">

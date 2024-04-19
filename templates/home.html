@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1 class="section-title">Olá, {{ session["nome"]}}! Estas são as suas tarefas</h1>
+    <div class="container">
+        <h1 class="section-title home-title">Olá, {{ session["nome"]}}! Estas são as suas tarefas</h1>
+    </div>
 
     <div class="card-container">
         <h1 class="container-title">Ativas</h1>
