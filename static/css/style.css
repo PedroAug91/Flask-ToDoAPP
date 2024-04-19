@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding: 7rem;
+}
+
+html {
+    font-size: 10px;
+}
+
+:root {
+    --clr-primary: #fffff4;
+    --clr-secondary: #bc452c;
+    --font: 'Inika', serif;
+}
+
+body {
+    background-color: var(--clr-primary);
+    font-family: var(--font);
+}
+
+
+header {
+    align-items: center;
+    background-color: var(--clr-secondary);
+    display: flex;
+    min-height: 7rem;
+}
+
+nav {
+    margin-inline: 14rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: auto;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+header a {
+    color: var(--clr-primary);
+}
+
+main a {
+    color: var(--clr-secondary)
+}

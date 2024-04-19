@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlaskToDo | {{ title }}</title>
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
    <header>
-        <a href=" {{ url_for('home') }}"><i class="fa-solid fa-house fa-3x"></i></a>
-        {% if "nome" in session %}
-            <a href="{{ url_for('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket fa-3x"></i></a>
-        {% endif %}
+        <nav>
+            <a href=" {{ url_for('home') }}"><i class="fa-solid fa-house fa-3x"></i></a>
+            {% if "nome" in session %}
+                <a href="{{ url_for('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket fa-3x"></i></a>
+            {% endif %}
+        </nav>
    </header> 
    <main>
         {% block content %}
