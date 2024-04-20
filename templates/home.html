@@ -3,38 +3,40 @@
     <div class="container">
         <h1 class="section-title home-title">Olá, {{ session["nome"]}}! Estas são as suas tarefas</h1>
     </div>
-
-    <div class="card-container">
-        <h1 class="container-title">Ativas</h1>
-        {% if active_tasks != None %}
-            {% for task in active_tasks %}
-                <div class="card">
-                    <p class="card-description">
-                        {{ task["descricao"] }}
-                    </p>
-                </div>
-            {% endfor %}
-        {% endif%}
-    </div>
-
-    <div class="card-container">
-        <h1 class="container-title">Concluídas</h1>
-        {% if inactive_tasks != None %}
-            {% for task in inactive_tasks %}
-                <div class="card">
-                    <p class="card-description">
-                        {{ task["descricao"] }}
-                    </p>
-                </div>
-            {% endfor %}
-        {% endif %}
-    </div>
-
-    <div class="card-container">
-        <h1 class="container-title">Adicionar nova tarefa</h1>
-        <div class="card">
-            <a href="{{ url_for('create') }}"><i class="fa-solid fa-pen-to-square fa-2x"></i></a>
-            <hr>
+    <section class="homepage-section">
+        <div class="card-container">
+            <h1 class="container-title">Ativas</h1>
+            {% if active_tasks != None %}
+                {% for task in active_tasks %}
+                    <div class="card">
+                        <a href=""><i class="fa-solid fa-square-check fa-3x"></i></a>
+                        <p class="card-description">
+                            {{ task["descricao"] }}
+                        </p>
+                    </div>
+                {% endfor %}
+            {% endif%}
         </div>
-    </div>
+        <div class="card-container">
+            <h1 class="container-title">Concluídas</h1>
+            {% if inactive_tasks != None %}
+                {% for task in inactive_tasks %}
+                    <div class="card">
+                        <a href=""><i class="fa-solid fa-square-minus fa-3x"></i></a>
+                        <p class="card-description">
+                            {{ task["descricao"] }}
+                        </p>
+                        <a href=""><i class="fa-solid fa-square-xmark fa-3x"></i></a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="card-container">
+            <h1 class="container-title">Adicionar nova tarefa</h1>
+            <div class="card">
+                <a href="{{ url_for('create') }}"><i class="fa-solid fa-pen-to-square fa-3x"></i></a>
+                <hr>
+            </div>
+        </div>
+    </section>
 {% endblock content %}

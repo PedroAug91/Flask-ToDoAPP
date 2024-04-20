@@ -47,14 +47,20 @@ body {
     justify-content: center;
 }
 
+main {
+    margin-top: 15rem;
+}
+
 /* Estilo da barra de navegação */
 
 header {
     align-items: center;
     background-color: var(--clr-secondary);
     display: flex;
-    margin-bottom: 8rem;
     min-height: 7rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
 nav {
@@ -173,4 +179,47 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* Estilo da página principal */
+
+.homepage-section {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 14rem;
+}
+
+.card-container {
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-title {
+    font-size: 2.4rem;
+}
+
+.card {
+    align-items: center;
+    border: solid black 1px;
+    border-radius: 5px;
+    display: flex;
+    width: 100%;
+    min-height: 7.7rem;
+    margin-bottom: 1rem;
+}
+
+.card a {
+    margin-inline: 2.5rem;
+}
+
+.card-description {
+    font-size: 2rem;
+    padding-block: 2.5rem;
+    width: 37.9rem;
+}
+
+hr {
+    width: calc(100% - 105px);
 }
