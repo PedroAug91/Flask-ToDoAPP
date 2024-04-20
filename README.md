@@ -43,6 +43,14 @@ Esta é uma aplicação de gerenciamento de tarefas simples utilizando o framewo
     caso queira o console de debug
 3. Abra a url disponibilizada pelo comando acima no seu navegador
 
+### Ajuda
+- Somente é possível executar a aplicação com o comando abaixo se forem retirados os "#" da condicional presente no final do arquivo `app.py`.
+
+    ```
+    python app.py
+    ```
+
+
 ## Autor
 
 * [@PedroAug91](https://github.com/PedroAug91)
