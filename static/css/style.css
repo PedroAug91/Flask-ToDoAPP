@@ -17,7 +17,7 @@ html {
 
 :root {
     --clr-primary: #fffff4;
-    --clr-secondary: #bc452c;
+    --clr-secondary: #bc542c;
     --font: 'Inika', serif;
 }
 
@@ -36,7 +36,7 @@ body {
     width: 18.8rem !important;
 }
 
-button:hover {
+button:hover, input:hover {
     cursor: pointer;
 }
 
@@ -241,10 +241,12 @@ input {
     font-size: 2rem;
     padding-block: 2.5rem;
     width: 37.9rem;
+    overflow-wrap: break-word;
 }
 
 .inactive-description {
     text-decoration: line-through;
+    width: calc(100% - 146px) !important;
 }
 
 hr {
