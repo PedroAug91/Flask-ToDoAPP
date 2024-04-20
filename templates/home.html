@@ -9,7 +9,9 @@
             {% if active_tasks != None %}
                 {% for task in active_tasks %}
                     <div class="card">
-                        <a href=""><i class="fa-solid fa-square-check fa-3x"></i></a>
+                        <form action="complete/{{ task['id_tarefa'] }}" method="post">
+                            <button type="submit"><i class="fa-solid fa-square-check fa-2x"></i></button>
+                        </form>
                         <p class="card-description">
                             {{ task["descricao"] }}
                         </p>
@@ -22,11 +24,15 @@
             {% if inactive_tasks != None %}
                 {% for task in inactive_tasks %}
                     <div class="card">
-                        <a href=""><i class="fa-solid fa-square-minus fa-3x"></i></a>
-                        <p class="card-description">
+                        <form action="alter/{{ task['id_tarefa'] }}" method="post">
+                            <button type="submit"><i class="fa-solid fa-square-minus fa-2x"></i></button>
+                        </form>
+                        <p class="card-description inactive-description">
                             {{ task["descricao"] }}
                         </p>
-                        <a href=""><i class="fa-solid fa-square-xmark fa-3x"></i></a>
+                        <form action="remove/{{ task['id_tarefa'] }}" method="post">
+                            <button type="submit"><i class="fa-solid fa-square-xmark fa-2x"></i></button>
+                        </form>
                     </div>
                 {% endfor %}
             {% endif %}

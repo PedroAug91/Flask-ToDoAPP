@@ -36,6 +36,10 @@ body {
     width: 18.8rem !important;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .section-title {
     font-size: 3.6rem;
     margin-inline: auto;
@@ -49,6 +53,11 @@ body {
 
 main {
     margin-top: 15rem;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color:#bc452c
 }
 
 /* Estilo da barra de navegação */
@@ -72,15 +81,16 @@ nav {
     width: 100%;
 }
 
-a, a:visited {
-    text-decoration: none;
-}
 
 header a {
     color: var(--clr-primary);
 }
 
-main a {
+header a:visited {
+    color: var(--clr-primary)
+}
+
+main i {
     color: var(--clr-secondary)
 }
 
@@ -168,6 +178,9 @@ input {
     max-width: 40.6rem;
 }
 
+.form-submit button {
+    padding-block: .95rem
+}
 
 .form-submit a{
     text-align: center;
@@ -179,6 +192,10 @@ input {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.form-submit a:visited {
+    color: var(--clr-primary)
 }
 
 /* Estilo da página principal */
@@ -210,14 +227,24 @@ input {
     margin-bottom: 1rem;
 }
 
-.card a {
+.card i {
     margin-inline: 2.5rem;
 }
+
+.card button {
+    border: 0;
+    background-color: transparent;
+}
+
 
 .card-description {
     font-size: 2rem;
     padding-block: 2.5rem;
     width: 37.9rem;
+}
+
+.inactive-description {
+    text-decoration: line-through;
 }
 
 hr {

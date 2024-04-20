@@ -27,11 +27,11 @@ def home():
 
     valores = (session["id_usuario"], )
 
-    sql = "SELECT descricao FROM tarefa WHERE id_usuario = %s AND ativo = 1"
+    sql = "SELECT id_tarefa, descricao FROM tarefa WHERE id_usuario = %s AND ativo = 1"
     cursor.execute(sql, valores)
     tarefas_ativas = cursor.fetchall()
     
-    sql = "SELECT descricao FROM tarefa WHERE id_usuario = %s AND ativo = 0"
+    sql = "SELECT id_tarefa, descricao FROM tarefa WHERE id_usuario = %s AND ativo = 0"
     cursor.execute(sql, valores)
     tarefas_inativas = cursor.fetchall()
 
@@ -123,6 +123,12 @@ def login():
     
     return render_template("login.html", title="Entrar", error=error)
 
+@app.route("/logout")
+def logout():
+    session.clear()
+
+    return redirect(url_for("login"))
+
 @app.route("/create", methods=["GET","POST"])
 def create():
     if ("nome" not in session):
@@ -144,11 +150,62 @@ def create():
         conexao.close()
 
         return redirect(url_for("home"))
-    
+
     return render_template("create.html", title="Criar")
 
-@app.route("/logout")
-def logout():
-    session.clear()
+@app.route("/complete/<int:id_tarefa>", methods=["POST"])
+def complete(id_tarefa):
+    conexao = connect_to_database()
+    cursor = conexao.cursor(dictionary=True)
+    
+    sql = "UPDATE tarefa SET ativo = 0 WHERE id_tarefa = %s"
+    valores = (id_tarefa, )
 
-    return redirect(url_for("login"))
+    cursor.execute(sql, valores)
+    conexao.commit()
+    
+    cursor.close()
+    conexao.close()
+    
+    return redirect(url_for("home"))
+
+@app.route("/alter/<int:id_tarefa>", methods=["POST"])
+def alter(id_tarefa):
+    conexao = connect_to_database()
+    cursor = conexao.cursor(dictionary=True)
+
+    sql = "SELECT ativo FROM tarefa WHERE id_tarefa = %s"
+    valores = (id_tarefa, )
+
+    cursor.execute(sql, valores)
+    tarefa = cursor.fetchone() 
+
+    if(tarefa["ativo"] == 1):
+        sql = "UPDATE tarefa SET ativo = 0 WHERE id_tarefa = %s"
+    else:
+        sql = "UPDATE tarefa SET ativo = 1 WHERE id_tarefa = %s"
+
+    cursor.execute(sql, valores)
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+    return redirect(url_for("home"))
+
+@app.route("/remove/<int:id_tarefa>", methods=["POST"])
+def remove(id_tarefa):
+    conexao = connect_to_database()
+    cursor = conexao.cursor(dictionary=True)
+
+    sql = "DELETE FROM tarefa WHERE id_tarefa = %s"
+    valores = (id_tarefa, )
+
+    cursor.execute(sql, valores)
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+    
+    return redirect(url_for("home"))
+
