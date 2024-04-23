@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="container">
-        <h1 class="section-title home-title">Olá, {{ session["nome"]}}! Estas são as suas tarefas</h1>
-    </div>
+    <h1 class="section-title home-title">Olá, {{ session["nome"]}}! Estas são as suas tarefas</h1>
     <section class="homepage-section">
         <div class="card-container">
             <h1 class="container-title">Ativas</h1>
@@ -15,6 +13,9 @@
                         <p class="card-description">
                             {{ task["descricao"] }}
                         </p>
+                        <form>
+                            <button disabled="disabled" class="invisible"><i class="fa-solid fa-square-check fa-2x"></i></button>
+                        </form>
                     </div>
                 {% endfor %}
             {% endif%}
@@ -39,10 +40,13 @@
         </div>
         <div class="card-container">
             <h1 class="container-title">Adicionar nova tarefa</h1>
+        <a href="{{ url_for('create') }}">
             <div class="card">
-                <a href="{{ url_for('create') }}"><i class="fa-solid fa-pen-to-square fa-3x"></i></a>
+                <i class="fa-solid fa-pen-to-square fa-3x"></i>
                 <hr>
+                <hr class="horizontal">
             </div>
+        </a>
         </div>
     </section>
 {% endblock content %}

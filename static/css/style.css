@@ -43,12 +43,9 @@ button:hover, input:hover {
 .section-title {
     font-size: 3.6rem;
     margin-inline: auto;
+    width: 80%;
     margin-bottom: 9.4rem;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
 main {
@@ -200,31 +197,30 @@ input {
 
 /* Estilo da página principal */
 
+
 .homepage-section {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap-reverse;
     margin-inline: 14rem;
+    gap: 1.5rem;
 }
 
-.card-container {
-    width: 50rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.homepage-section > * {
+    flex: 1 1 50rem;
 }
 
 .container-title {
     font-size: 2.4rem;
+    text-align: center;
 }
 
+
 .card {
-    align-items: center;
+    display: flex;
     border: solid black 1px;
     border-radius: 5px;
-    display: flex;
-    width: 100%;
     min-height: 7.7rem;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
 .card i {
@@ -236,19 +232,48 @@ input {
     background-color: transparent;
 }
 
+.invisible > i {
+    background-color: transparent;
+    color: transparent;
+}
+
+.invisible:hover {
+    cursor: auto;
+}
+
+.card-description,
+.card a {
+    padding-block: 2.3rem;
+}
+
 
 .card-description {
     font-size: 2rem;
-    padding-block: 2.5rem;
-    width: 37.9rem;
-    overflow-wrap: break-word;
+    flex: 1 1;
 }
 
 .inactive-description {
     text-decoration: line-through;
-    width: calc(100% - 146px) !important;
 }
 
 hr {
-    width: calc(100% - 105px);
+    border: 0;
+    background-color: black;
+    width: 1px;
+}
+
+.horizontal {
+    width: calc(100% - 130px); 
+    height: 1px;
+    margin: auto;
+}
+
+a > .card > i {
+    padding-block: 2.3rem;
+}
+
+@media  screen and (max-width: 1040px) {
+     .homepage-section, nav {
+        margin-inline: 1rem;
+     }
 }
