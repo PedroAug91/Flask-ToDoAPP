@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="form-container">
+<section class="form-section">
     <h1 class="form-title">Cadastre-se agora!</h1>
     <form method="post" enctype="application/x-www-form-urlencoded">
         <div class="form-group">
@@ -20,6 +20,6 @@
 
         <div class="form-submit"><input type="submit" value="Cadastrar" class="btn btn-large"></div>
     </form>
-    <span class="form-redirect">Já possui uma conta? <a href="{{ url_for('login') }}" class="form-redirect-link">Entrar</a></span>
-</div>
+    <span class="form-redirect">Já possui uma conta?<br><a href="{{ url_for('login') }}" class="form-redirect-link">Entrar</a></span>
+</section>
 {% endblock content %}

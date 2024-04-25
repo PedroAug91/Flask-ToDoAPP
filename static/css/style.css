@@ -93,15 +93,15 @@ main i {
 
 /* Estilo dos formularios */
 
-.form-container {
-    align-items: center;
+.form-section {
     border: solid #000000 1px;
     border-radius: 10px;
     box-shadow: 0 1px 2px 0;
-    display: flex;
-    flex-direction: column;
+    max-width: 50%;
     margin-inline: auto;
-    max-width: 96rem;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .form-title {
@@ -110,12 +110,6 @@ main i {
     margin-block: 2rem;
 }
 
-form {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 
 .form-group, .btn-large {
     margin-bottom: 1rem;
@@ -124,7 +118,17 @@ form {
 .form-group {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
+
+form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 44rem;
+}
+
 
 label {
     font-size: 2.4rem;
@@ -137,11 +141,10 @@ input {
     font-size: 2rem;
     min-height: 4.9rem;
     padding-inline: .8rem;
-    width: 44rem;
 }
 
 .btn-large {
-    width: 25.8rem !important;
+    max-width: 25.8rem !important;
 }
 
 .form-redirect {
@@ -275,7 +278,56 @@ a > .card > i {
 }
 
 @media  screen and (max-width: 1040px) {
-     .homepage-section, nav {
+    .homepage-section, nav {
         margin-inline: 1rem;
-     }
+    }
+
+    .form-section {
+        max-width: 100%;
+    }
+
+    main {
+        margin-top: 10rem;
+    }
+
+    .section-title {
+        font-size: 2.6rem;
+        margin-bottom: 4rem;
+    }
+
+    .form-title {
+        font-size: 2.4rem;
+    }
+
+    .form-group label, .form-redirect {
+        font-size: 1.8rem;
+    }
+
+    form {
+        max-width: calc(100% - 2rem);    
+        
+    }
+    .container-title {
+        font-size: 2.2rem;
+    }
+
+    .card-description {
+        width: 100px;
+        font-size: 2.0rem;
+    }
+
+    .card-container:nth-child(3) {
+        order: 3;
+    }
+    .card-container:nth-child(1) {
+        order: 2;
+    }
+    .card-container:nth-child(2) {
+        order: 1;
+    }
+
+   .form-section {
+        border: 0;
+        box-shadow: none;
+   } 
 }

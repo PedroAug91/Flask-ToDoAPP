@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="form-container">
+<section class="form-section">
     <h1 class="form-title">Entrar</h1>
     <form method="post" enctype="application/x-www-form-urlencoded">
         <div class="form-group">
@@ -15,6 +15,6 @@
 
         <input type="submit" value="Enviar" class="btn btn-large" >
     </form>
-    <span class="form-redirect">Ainda não possui uma conta? <a href="{{ url_for('signup') }}" class="form-redirect-link">Cadastre-se</a></span>
-</div>    
+    <span class="form-redirect">Ainda não possui uma conta?<br><a href="{{ url_for('signup') }}" class="form-redirect-link">Cadastre-se</a></span>
+</section>    
 {% endblock content %}
