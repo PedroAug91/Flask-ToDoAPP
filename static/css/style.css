@@ -162,11 +162,17 @@ input {
 
 /* Estilo da página de criação de posts */
 
+.new-post-form {
+    flex-direction: column;
+    align-items: center;
+}
+
 #description {
     border: 1px solid black;
     border-radius: 10px;
-    width: 53rem !important;
-    height: 27.5rem !important;
+    width: calc(100% - 4rem);
+    max-width: 55rem;
+    height: 27.5rem;
     font-size: 2rem;
     font-family: 'Inika', serif;
     padding: .8rem;
@@ -177,11 +183,13 @@ input {
     display: flex;
     align-items: center;
     gap: 3rem;
-    max-width: 40.6rem;
+    max-width: 44rem;
+    flex-wrap: wrap;
 }
 
+
 .form-submit button {
-    padding-block: .95rem
+    padding-block: .95rem;
 }
 
 .form-submit a{
@@ -305,7 +313,7 @@ a > .card > i {
         font-size: 1.8rem;
     }
 
-    .auth-form {
+    .auth-form{
         max-width: calc(100% - 2rem);    
     }
     .container-title {
@@ -331,4 +339,13 @@ a > .card > i {
         border: 0;
         box-shadow: none;
    } 
+   .form-submit {
+    width: calc(100% - 2rem);
+    gap: 1.5rem;
+   }
+
+   .form-submit a, .btn {
+    flex: 1 1 100%;
+    max-width: 100%;
+   }
 }
